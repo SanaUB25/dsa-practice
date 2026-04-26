@@ -1,0 +1,43 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+      
+    int firstIndex = -1;
+    //to return the index of the first occuring element
+    int first = 0;
+    int last = nums.length-1;
+    while(first<=last){
+    int mid = first + (last-first)/2;
+    if(nums[mid]==target){
+            firstIndex= mid;
+            last = mid-1;
+
+    } else if (nums[mid]<target){
+        first = mid+1;
+    }
+    else{
+        last = mid-1;
+    }
+
+}
+  
+         
+        int lastIndex = -1;
+        //to return the index of the first occuring element
+        int first1 = 0;
+        int last1 = nums.length-1;
+        while(first1<=last1){
+            int mid1 = first1 + (last1-first1)/2;
+            if(nums[mid1]==target){
+               lastIndex= mid1;
+                first1 = mid1+1;
+
+            } else if (nums[mid1]<target){
+                first1 = mid1+1;
+            }
+            else{
+                last1 = mid1-1;
+            }
+
+        }
+        return new int[] {firstIndex,lastIndex};
+    }}
