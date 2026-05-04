@@ -1,0 +1,21 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+       int first =0;
+        char max ='$';
+        int end = letters.length-1;
+        
+        while(first<=end){
+        int mid = first + (end-first)/2;
+            
+            if (letters[mid]<=target){
+                first = mid+1;
+
+            }
+            else{
+                max = letters[mid];
+                end = mid-1;
+            }}
+        
+        return(max=='$')?letters[0]:max;
+    }}
+
