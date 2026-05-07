@@ -1,0 +1,30 @@
+class Solution {
+    public int findMin(int[] nums) {
+        int first = 0;
+        int MINE=Integer.MAX_VALUE;
+        int end = nums.length-1;
+        while(first<=end){
+            int mid = first + (end-first)/2;
+            if(nums.length==1){
+                return nums[0];
+            }
+           else if ((nums[first]==nums[mid])&&(nums[mid]==nums[end])){
+             MINE = Math.min(MINE,nums[first]);
+            first++;
+            end--;
+        continue;
+           }
+            else if(nums[first]<=nums[mid]){
+                MINE = Math.min(MINE,nums[first]);
+                first = mid+1;
+            }
+           
+            
+            else{
+            MINE = Math.min(nums[mid],MINE);
+                end = mid-1;
+                
+            }
+        }
+        return MINE;
+    }}
