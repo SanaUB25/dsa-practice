@@ -1,0 +1,41 @@
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+            int start = Integer.MIN_VALUE;
+            int end = 0;
+            int total = 0;
+            int res = -1;
+            while (start <= end) {
+                int mid = start + (end - start) / 2;
+                for (int i = 0; i < weights.length; i++) {
+                    if (start < weights[i]) {
+                        start =weights[i];
+                    }
+                    end += weights[i];
+                }
+                if (isShipmentTrue(mid, days, weights)) {
+                    res = mid;
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+
+            }
+ return res ;
+        }
+        static boolean isShipmentTrue ( int mid, int days, int[] weights){
+            int date = 1;
+            int value = 0;
+
+            for (int i = 0; i < weights.length; i++) {
+                value += weights[i];
+                if (value > mid) {
+                    date++;
+                    value = weights[i];
+                }
+                if (date> days) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
